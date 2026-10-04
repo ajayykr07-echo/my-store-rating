@@ -1,0 +1,6 @@
+/assets/*.js
+  Content-Type: text/javascript
+/*.js
+  Content-Type: text/javascript
+/*.mjs
+  Content-Type: text/javascript

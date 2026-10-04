@@ -1,0 +1,153 @@
+:root {
+  /* LIGHT MODE SEMANTICS */
+  --bg-main: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --border-color: #E2E8F0;
+  
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  
+  /* LIGHT MODE PRIMITIVES (Mapped for components) */
+  --white: #FFFFFF;
+  --gray-50: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-500: #64748B;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1E293B;
+  --gray-900: #0F172A;
+
+  /* BRAND & ACCENT COLORS - Light */
+  --indigo-600: #4F46E5;
+  --indigo-500: #6366F1;
+  --violet-600: #7C3AED;
+  --purple-500: #A855F7;
+  
+  --sky-600: #0284C7;
+  --sky-700: #0369A1;
+  --sky-200: #BAE6FD;
+  --sky-50: #F0F9FF;
+  
+  --blue-50: #EFF6FF;
+  --blue-200: #BFDBFE;
+  --blue-800: #1E40AF;
+  
+  /* STATUS COLORS - Light */
+  --emerald-600: #059669;
+  --emerald-800: #065F46;
+  --emerald-200: #A7F3D0;
+  --emerald-50: #ECFDF5;
+  
+  --red-500: #EF4444;
+  --red-800: #991B1B;
+  --red-200: #FECACA;
+  --red-50: #FEF2F2;
+  
+  --amber-500: #F59E0B;
+  --amber-800: #92400E;
+  --amber-200: #FDE68A;
+  --amber-50: #FFFBEB;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.dark {
+  /* DARK MODE SEMANTICS */
+  --bg-main: #0B0F19;
+  --card-bg: #111827;
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --border-color: #1E293B;
+  
+  --primary: #3B82F6;
+  --primary-hover: #60A5FA;
+  
+  /* DARK MODE PRIMITIVES (Inverted for components) */
+  --white: #111827;
+  --gray-50: #1E293B;
+  --gray-100: #334155;
+  --gray-200: #475569;
+  --gray-300: #64748B;
+  --gray-400: #94A3B8;
+  --gray-500: #CBD5E1;
+  --gray-600: #E2E8F0;
+  --gray-700: #F1F5F9;
+  --gray-800: #F8FAFC;
+  --gray-900: #FFFFFF;
+
+  /* BRAND & ACCENT COLORS - Dark */
+  --indigo-600: #818CF8;
+  --indigo-500: #6366F1;
+  --violet-600: #A78BFA;
+  --purple-500: #C084FC;
+  
+  --sky-600: #38BDF8;
+  --sky-700: #7DD3FC;
+  --sky-200: #0369A1;
+  --sky-50: #082F49;
+  
+  --blue-50: #172554;
+  --blue-200: #1E40AF;
+  --blue-800: #BFDBFE;
+  
+  /* STATUS COLORS - Dark */
+  --emerald-600: #34D399;
+  --emerald-800: #6EE7B7;
+  --emerald-200: #064E3B;
+  --emerald-50: #022C22;
+  
+  --red-500: #F87171;
+  --red-800: #FCA5A5;
+  --red-200: #7F1D1D;
+  --red-50: #450A0A;
+  
+  --amber-500: #FBBF24;
+  --amber-800: #FCD34D;
+  --amber-200: #78350F;
+  --amber-50: #411900;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  min-height: 100vh;
+}
+
+input, select, textarea, button {
+  font-family: inherit;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+button {
+  transition: all 0.15s ease-in-out;
+}
+
+button:active {
+  transform: scale(0.98);
+}
