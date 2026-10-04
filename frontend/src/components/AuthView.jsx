@@ -361,7 +361,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
         {mode === "login" && (
           <form onSubmit={handleLoginSubmit}>
             <div style={{ marginBottom: "16px" }}>
-              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "var(--gray-700)", marginBottom: "6px" }}>
+              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)", marginBottom: "6px" }}>
                 Email Address
               </label>
               <input
@@ -375,7 +375,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   width: "100%",
                   padding: "10px 12px",
                   borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -383,7 +383,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </div>
 
             <div style={{ marginBottom: "20px" }}>
-              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "var(--gray-700)", marginBottom: "6px" }}>
+              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)", marginBottom: "6px" }}>
                 Password
               </label>
               <input
@@ -396,7 +396,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   width: "100%",
                   padding: "10px 12px",
                   borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -472,7 +472,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </div>
 
             <div style={{ marginBottom: "16px" }}>
-              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "var(--gray-700)", marginBottom: "6px" }}>
+              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)", marginBottom: "6px" }}>
                 Store Owner Email
               </label>
               <input
@@ -486,7 +486,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   width: "100%",
                   padding: "10px 12px",
                   borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -494,7 +494,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </div>
 
             <div style={{ marginBottom: "20px" }}>
-              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "var(--gray-700)", marginBottom: "6px" }}>
+              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)", marginBottom: "6px" }}>
                 Password
               </label>
               <input
@@ -507,7 +507,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   width: "100%",
                   padding: "10px 12px",
                   borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
+                  border: "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -568,7 +568,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
           <form onSubmit={handleSignupSubmit}>
             <div style={{ marginBottom: "14px" }}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <label style={{ fontSize: "13px", fontWeight: "600", color: "var(--gray-700)" }}>
+                <label style={{ fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)" }}>
                   Full Name *
                 </label>
                 <span
@@ -591,7 +591,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   padding: "9px 12px",
                   marginTop: "4px",
                   borderRadius: "6px",
-                  border: formErrors.name ? "1px solid var(--red-500)" : "1px solid var(--gray-300)",
+                  border: formErrors.name ? "1px solid var(--red-500)" : "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -604,7 +604,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </div>
 
             <div style={{ marginBottom: "14px" }}>
-              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "var(--gray-700)" }}>
+              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)" }}>
                 Email Address *
               </label>
               <input
@@ -619,7 +619,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   padding: "9px 12px",
                   marginTop: "4px",
                   borderRadius: "6px",
-                  border: formErrors.email ? "1px solid var(--red-500)" : "1px solid var(--gray-300)",
+                  border: formErrors.email ? "1px solid var(--red-500)" : "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -632,7 +632,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </div>
 
             <div style={{ marginBottom: "14px" }}>
-              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "var(--gray-700)" }}>
+              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)" }}>
                 Password *
               </label>
               <input
@@ -646,7 +646,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   padding: "9px 12px",
                   marginTop: "4px",
                   borderRadius: "6px",
-                  border: formErrors.password ? "1px solid var(--red-500)" : "1px solid var(--gray-300)",
+                  border: formErrors.password ? "1px solid var(--red-500)" : "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -662,7 +662,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </div>
 
             <div style={{ marginBottom: "14px" }}>
-              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "var(--gray-700)" }}>
+              <label style={{ display: "block", fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)" }}>
                 Confirm Password *
               </label>
               <input
@@ -676,7 +676,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   padding: "9px 12px",
                   marginTop: "4px",
                   borderRadius: "6px",
-                  border: formErrors.confirmPassword ? "1px solid var(--red-500)" : "1px solid var(--gray-300)",
+                  border: formErrors.confirmPassword ? "1px solid var(--red-500)" : "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontSize: "14px",
                 }}
@@ -690,7 +690,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
 
             <div style={{ marginBottom: "18px" }}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <label style={{ fontSize: "13px", fontWeight: "600", color: "var(--gray-700)" }}>
+                <label style={{ fontSize: "13px", fontWeight: "600", color: "rgba(255, 255, 255, 0.9)" }}>
                   Residential Address *
                 </label>
                 <span
@@ -713,7 +713,7 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
                   padding: "9px 12px",
                   marginTop: "4px",
                   borderRadius: "6px",
-                  border: formErrors.address ? "1px solid var(--red-500)" : "1px solid var(--gray-300)",
+                  border: formErrors.address ? "1px solid var(--red-500)" : "1px solid rgba(255, 255, 255, 0.15)", background: "rgba(0, 0, 0, 0.2)", color: "white",
                   boxSizing: "border-box",
                   fontFamily: "inherit",
                   fontSize: "14px",
