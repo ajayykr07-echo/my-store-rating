@@ -113,56 +113,155 @@ export default function UserView({ token, onNotify }) {
   return (
     <div className="app-container">
       {/* Search and Filters Section */}
-      <form onSubmit={handleSearchSubmit} className="search-container">
-        <div className="search-input-wrapper">
-          <label className="search-label" htmlFor="searchName">Store Name</label>
-          <input
-            id="searchName"
-            type="text"
-            className="search-input"
-            placeholder="e.g. Artisan Coffee"
-            value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
-          />
+      <form
+        onSubmit={handleSearchSubmit}
+        style={{
+          background: "var(--white)",
+          padding: "16px 20px",
+          borderRadius: "12px",
+          border: "1px solid var(--gray-200)",
+          marginBottom: "24px",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <h3 style={{ margin: 0, fontSize: "14px", fontWeight: "600", color: "var(--gray-800)", display: "flex", alignItems: "center", gap: "6px" }}>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+            Filter Stores
+          </h3>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <button
+              type="button"
+              onClick={handleResetSearch}
+              style={{
+                padding: "6px 12px",
+                borderRadius: "6px",
+                border: "none",
+                background: "transparent",
+                color: "var(--gray-500)",
+                fontSize: "13px",
+                fontWeight: "500",
+                cursor: "pointer",
+                transition: "all 0.2s"
+              }}
+              onMouseOver={(e) => { e.target.style.color = "var(--gray-800)"; e.target.style.background = "var(--gray-100)"; }}
+              onMouseOut={(e) => { e.target.style.color = "var(--gray-500)"; e.target.style.background = "transparent"; }}
+            >
+              Clear Filters
+            </button>
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                padding: "6px 12px",
+                borderRadius: "6px",
+                border: "1px solid var(--gray-200)",
+                background: "var(--white)",
+                color: "var(--gray-700)",
+                fontSize: "13px",
+                fontWeight: "500",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+              }}
+            >
+              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              Search
+            </button>
+          </div>
         </div>
 
-        <div className="search-input-wrapper">
-          <label className="search-label" htmlFor="searchAddress">Store Address</label>
-          <input
-            id="searchAddress"
-            type="text"
-            className="search-input"
-            placeholder="e.g. 123 Main St"
-            value={searchAddress}
-            onChange={(e) => setSearchAddress(e.target.value)}
-          />
-        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "12px",
+          }}
+        >
+          <div style={{ position: "relative" }}>
+            <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input
+              type="text"
+              placeholder="Search by store name..."
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "10px 10px 10px 34px",
+                borderRadius: "8px",
+                border: "1px solid var(--gray-200)",
+                background: "var(--gray-50)",
+                boxSizing: "border-box",
+                fontSize: "13px",
+                transition: "all 0.2s",
+                outline: "none",
+              }}
+              onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+              onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+            />
+          </div>
 
-        <div className="search-input-wrapper">
-          <label className="search-label" htmlFor="sortBy">Sort By</label>
-          <select
-            id="sortBy"
-            className="search-input"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option value="name-asc">Name (A to Z)</option>
-            <option value="name-desc">Name (Z to A)</option>
-            <option value="address-asc">Address (A to Z)</option>
-            <option value="address-desc">Address (Z to A)</option>
-            <option value="rating-desc">Overall Rating (High to Low)</option>
-            <option value="rating-asc">Overall Rating (Low to High)</option>
-            <option value="myrating-desc">My Rating (High to Low)</option>
-            <option value="myrating-asc">My Rating (Low to High)</option>
-          </select>
-        </div>
+          <div style={{ position: "relative" }}>
+            <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <input
+              type="text"
+              placeholder="Search by address..."
+              value={searchAddress}
+              onChange={(e) => setSearchAddress(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "10px 10px 10px 34px",
+                borderRadius: "8px",
+                border: "1px solid var(--gray-200)",
+                background: "var(--gray-50)",
+                boxSizing: "border-box",
+                fontSize: "13px",
+                transition: "all 0.2s",
+                outline: "none",
+              }}
+              onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+              onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+            />
+          </div>
 
-        <button type="submit" className="search-btn">
-          Search
-        </button>
-        <button type="button" onClick={handleResetSearch} className="reset-btn">
-          Reset
-        </button>
+          <div style={{ position: "relative" }}>
+            <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)", pointerEvents: "none" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              style={{
+                width: "100%",
+                padding: "10px 10px 10px 34px",
+                borderRadius: "8px",
+                border: "1px solid var(--gray-200)",
+                background: "var(--gray-50)",
+                boxSizing: "border-box",
+                fontSize: "13px",
+                transition: "all 0.2s",
+                outline: "none",
+                appearance: "none",
+                cursor: "pointer",
+              }}
+              onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+              onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+            >
+              <option value="name-asc">Name (A to Z)</option>
+              <option value="name-desc">Name (Z to A)</option>
+              <option value="address-asc">Address (A to Z)</option>
+              <option value="address-desc">Address (Z to A)</option>
+              <option value="rating-desc">Overall Rating (High to Low)</option>
+              <option value="rating-asc">Overall Rating (Low to High)</option>
+              <option value="myrating-desc">My Rating (High to Low)</option>
+              <option value="myrating-asc">My Rating (Low to High)</option>
+            </select>
+            <svg style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)", pointerEvents: "none" }} width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </div>
       </form>
 
       {/* Header for Stores List */}
