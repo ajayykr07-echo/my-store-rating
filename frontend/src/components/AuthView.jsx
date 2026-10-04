@@ -302,18 +302,25 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </button>
           )}
         </div>
-        <img
-          src="/logo.jpg"
-          alt="My Store Rating Logo"
+        <div
           style={{
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
             width: "56px",
             height: "56px",
             borderRadius: "14px",
-            objectFit: "cover",
-            marginBottom: "12px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+            background: "linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(79, 70, 229, 0.9) 100%)",
+            color: "white",
+            marginBottom: "16px",
+            boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
+            border: "1px solid rgba(255,255,255,0.1)",
           }}
-        />
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
         <h1
           style={{
             margin: "0 0 4px 0",
