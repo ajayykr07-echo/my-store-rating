@@ -136,6 +136,7 @@ body {
 
 input, select, textarea, button {
   font-family: inherit;
+  color: var(--text-main);
 }
 
 input:focus, select:focus, textarea:focus {
