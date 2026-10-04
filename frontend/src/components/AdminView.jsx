@@ -419,122 +419,157 @@ export default function AdminView({ token, onNotify }) {
           <div
             style={{
               background: "var(--white)",
-              padding: "16px",
-              borderRadius: "10px",
+              padding: "16px 20px",
+              borderRadius: "12px",
               border: "1px solid var(--gray-200)",
-              marginBottom: "16px",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "10px",
-              alignItems: "end",
+              marginBottom: "24px",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "16px",
             }}
           >
-            <div>
-              <label style={{ fontSize: "12px", fontWeight: "600", color: "var(--gray-600)" }}>
-                Filter Store Name
-              </label>
-              <input
-                type="text"
-                placeholder="Search name..."
-                value={storeFilters.name}
-                onChange={(e) => {
-                  const updated = { ...storeFilters, name: e.target.value };
-                  setStoreFilters(updated);
-                  fetchStores(updated);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "8px 10px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  marginTop: "4px",
-                  boxSizing: "border-box",
-                }}
-              />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <h3 style={{ margin: 0, fontSize: "14px", fontWeight: "600", color: "var(--gray-800)", display: "flex", alignItems: "center", gap: "6px" }}>
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                Filter Stores
+              </h3>
+              <div style={{ display: "flex", gap: "8px" }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const cleared = { name: "", email: "", address: "" };
+                    setStoreFilters(cleared);
+                    fetchStores(cleared);
+                  }}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "none",
+                    background: "transparent",
+                    color: "var(--gray-500)",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    cursor: "pointer",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseOver={(e) => { e.target.style.color = "var(--gray-800)"; e.target.style.background = "var(--gray-100)"; }}
+                  onMouseOut={(e) => { e.target.style.color = "var(--gray-500)"; e.target.style.background = "transparent"; }}
+                >
+                  Clear Filters
+                </button>
+                <button
+                  type="button"
+                  onClick={() => fetchStores(storeFilters)}
+                  disabled={loading}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--white)",
+                    color: "var(--gray-700)",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+                  }}
+                >
+                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                  Refresh
+                </button>
+              </div>
             </div>
 
-            <div>
-              <label style={{ fontSize: "12px", fontWeight: "600", color: "var(--gray-600)" }}>
-                Filter Email
-              </label>
-              <input
-                type="text"
-                placeholder="Search email..."
-                value={storeFilters.email}
-                onChange={(e) => {
-                  const updated = { ...storeFilters, email: e.target.value };
-                  setStoreFilters(updated);
-                  fetchStores(updated);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "8px 10px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  marginTop: "4px",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "12px",
+              }}
+            >
+              <div style={{ position: "relative" }}>
+                <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <input
+                  type="text"
+                  placeholder="Search by store name..."
+                  value={storeFilters.name}
+                  onChange={(e) => {
+                    const updated = { ...storeFilters, name: e.target.value };
+                    setStoreFilters(updated);
+                    fetchStores(updated);
+                  }}
+                  style={{
+                    width: "100%",
+                    padding: "10px 10px 10px 34px",
+                    borderRadius: "8px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--gray-50)",
+                    boxSizing: "border-box",
+                    fontSize: "13px",
+                    transition: "all 0.2s",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+                  onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+                />
+              </div>
 
-            <div>
-              <label style={{ fontSize: "12px", fontWeight: "600", color: "var(--gray-600)" }}>
-                Filter Address
-              </label>
-              <input
-                type="text"
-                placeholder="Search address..."
-                value={storeFilters.address}
-                onChange={(e) => {
-                  const updated = { ...storeFilters, address: e.target.value };
-                  setStoreFilters(updated);
-                  fetchStores(updated);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "8px 10px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  marginTop: "4px",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
+              <div style={{ position: "relative" }}>
+                <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <input
+                  type="text"
+                  placeholder="Search by email..."
+                  value={storeFilters.email}
+                  onChange={(e) => {
+                    const updated = { ...storeFilters, email: e.target.value };
+                    setStoreFilters(updated);
+                    fetchStores(updated);
+                  }}
+                  style={{
+                    width: "100%",
+                    padding: "10px 10px 10px 34px",
+                    borderRadius: "8px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--gray-50)",
+                    boxSizing: "border-box",
+                    fontSize: "13px",
+                    transition: "all 0.2s",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+                  onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+                />
+              </div>
 
-            <div style={{ display: "flex", gap: "8px" }}>
-              <button
-                type="button"
-                onClick={() => {
-                  const cleared = { name: "", email: "", address: "" };
-                  setStoreFilters(cleared);
-                  fetchStores(cleared);
-                }}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  background: "var(--gray-100)",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
-              >
-                Reset
-              </button>
-              <button
-                type="button"
-                onClick={() => fetchStores(storeFilters)}
-                disabled={loading}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  background: "var(--white)",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
-              >
-                🔄 Refresh
-              </button>
+              <div style={{ position: "relative" }}>
+                <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <input
+                  type="text"
+                  placeholder="Search by address..."
+                  value={storeFilters.address}
+                  onChange={(e) => {
+                    const updated = { ...storeFilters, address: e.target.value };
+                    setStoreFilters(updated);
+                    fetchStores(updated);
+                  }}
+                  style={{
+                    width: "100%",
+                    padding: "10px 10px 10px 34px",
+                    borderRadius: "8px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--gray-50)",
+                    boxSizing: "border-box",
+                    fontSize: "13px",
+                    transition: "all 0.2s",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+                  onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+                />
+              </div>
             </div>
           </div>
 
@@ -837,150 +872,190 @@ export default function AdminView({ token, onNotify }) {
           <div
             style={{
               background: "var(--white)",
-              padding: "16px",
-              borderRadius: "10px",
+              padding: "16px 20px",
+              borderRadius: "12px",
               border: "1px solid var(--gray-200)",
-              marginBottom: "16px",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
-              gap: "10px",
-              alignItems: "end",
+              marginBottom: "24px",
+              boxShadow: "0 2px 4px rgba(0,0,0,0.02)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "16px",
             }}
           >
-            <div>
-              <label style={{ fontSize: "12px", fontWeight: "600", color: "var(--gray-600)" }}>
-                Filter Name
-              </label>
-              <input
-                type="text"
-                placeholder="Search name"
-                value={userFilters.name}
-                onChange={(e) => {
-                  const updated = { ...userFilters, name: e.target.value };
-                  setUserFilters(updated);
-                  fetchUsers(updated);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "8px 10px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  marginTop: "4px",
-                  boxSizing: "border-box",
-                }}
-              />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <h3 style={{ margin: 0, fontSize: "14px", fontWeight: "600", color: "var(--gray-800)", display: "flex", alignItems: "center", gap: "6px" }}>
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                Filter Users
+              </h3>
+              <div style={{ display: "flex", gap: "8px" }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const cleared = { name: "", email: "", address: "", role: "" };
+                    setUserFilters(cleared);
+                    fetchUsers(cleared);
+                  }}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "none",
+                    background: "transparent",
+                    color: "var(--gray-500)",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    cursor: "pointer",
+                    transition: "all 0.2s"
+                  }}
+                  onMouseOver={(e) => { e.target.style.color = "var(--gray-800)"; e.target.style.background = "var(--gray-100)"; }}
+                  onMouseOut={(e) => { e.target.style.color = "var(--gray-500)"; e.target.style.background = "transparent"; }}
+                >
+                  Clear Filters
+                </button>
+                <button
+                  type="button"
+                  onClick={() => fetchUsers(userFilters)}
+                  disabled={loading}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "6px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--white)",
+                    color: "var(--gray-700)",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+                  }}
+                >
+                  <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                  Refresh
+                </button>
+              </div>
             </div>
 
-            <div>
-              <label style={{ fontSize: "12px", fontWeight: "600", color: "var(--gray-600)" }}>
-                Filter Email
-              </label>
-              <input
-                type="text"
-                placeholder="Search email"
-                value={userFilters.email}
-                onChange={(e) => {
-                  const updated = { ...userFilters, email: e.target.value };
-                  setUserFilters(updated);
-                  fetchUsers(updated);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "8px 10px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  marginTop: "4px",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "12px",
+              }}
+            >
+              <div style={{ position: "relative" }}>
+                <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                <input
+                  type="text"
+                  placeholder="Search by name..."
+                  value={userFilters.name}
+                  onChange={(e) => {
+                    const updated = { ...userFilters, name: e.target.value };
+                    setUserFilters(updated);
+                    fetchUsers(updated);
+                  }}
+                  style={{
+                    width: "100%",
+                    padding: "10px 10px 10px 34px",
+                    borderRadius: "8px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--gray-50)",
+                    boxSizing: "border-box",
+                    fontSize: "13px",
+                    transition: "all 0.2s",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+                  onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+                />
+              </div>
 
-            <div>
-              <label style={{ fontSize: "12px", fontWeight: "600", color: "var(--gray-600)" }}>
-                Filter Address
-              </label>
-              <input
-                type="text"
-                placeholder="Search address"
-                value={userFilters.address}
-                onChange={(e) => {
-                  const updated = { ...userFilters, address: e.target.value };
-                  setUserFilters(updated);
-                  fetchUsers(updated);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "8px 10px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  marginTop: "4px",
-                  boxSizing: "border-box",
-                }}
-              />
-            </div>
+              <div style={{ position: "relative" }}>
+                <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <input
+                  type="text"
+                  placeholder="Search by email..."
+                  value={userFilters.email}
+                  onChange={(e) => {
+                    const updated = { ...userFilters, email: e.target.value };
+                    setUserFilters(updated);
+                    fetchUsers(updated);
+                  }}
+                  style={{
+                    width: "100%",
+                    padding: "10px 10px 10px 34px",
+                    borderRadius: "8px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--gray-50)",
+                    boxSizing: "border-box",
+                    fontSize: "13px",
+                    transition: "all 0.2s",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+                  onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+                />
+              </div>
 
-            <div>
-              <label style={{ fontSize: "12px", fontWeight: "600", color: "var(--gray-600)" }}>
-                Filter Role
-              </label>
-              <select
-                value={userFilters.role}
-                onChange={(e) => {
-                  const updated = { ...userFilters, role: e.target.value };
-                  setUserFilters(updated);
-                  fetchUsers(updated);
-                }}
-                style={{
-                  width: "100%",
-                  padding: "8px 10px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  marginTop: "4px",
-                  boxSizing: "border-box",
-                  background: "var(--white)",
-                }}
-              >
-                <option value="">All Roles</option>
-                <option value="admin">Admin</option>
-                <option value="owner">Store Owner</option>
-                <option value="user">Normal User</option>
-              </select>
-            </div>
+              <div style={{ position: "relative" }}>
+                <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                <input
+                  type="text"
+                  placeholder="Search by address..."
+                  value={userFilters.address}
+                  onChange={(e) => {
+                    const updated = { ...userFilters, address: e.target.value };
+                    setUserFilters(updated);
+                    fetchUsers(updated);
+                  }}
+                  style={{
+                    width: "100%",
+                    padding: "10px 10px 10px 34px",
+                    borderRadius: "8px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--gray-50)",
+                    boxSizing: "border-box",
+                    fontSize: "13px",
+                    transition: "all 0.2s",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+                  onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+                />
+              </div>
 
-            <div style={{ display: "flex", gap: "8px" }}>
-              <button
-                type="button"
-                onClick={() => {
-                  const cleared = { name: "", email: "", address: "", role: "" };
-                  setUserFilters(cleared);
-                  fetchUsers(cleared);
-                }}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  background: "var(--gray-100)",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
-              >
-                Reset
-              </button>
-              <button
-                type="button"
-                onClick={() => fetchUsers(userFilters)}
-                disabled={loading}
-                style={{
-                  padding: "8px 14px",
-                  borderRadius: "6px",
-                  border: "1px solid var(--gray-300)",
-                  background: "var(--white)",
-                  fontSize: "13px",
-                  cursor: "pointer",
-                }}
-              >
-                🔄 Refresh
-              </button>
+              <div style={{ position: "relative" }}>
+                <svg style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)", pointerEvents: "none" }} width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+                <select
+                  value={userFilters.role}
+                  onChange={(e) => {
+                    const updated = { ...userFilters, role: e.target.value };
+                    setUserFilters(updated);
+                    fetchUsers(updated);
+                  }}
+                  style={{
+                    width: "100%",
+                    padding: "10px 10px 10px 34px",
+                    borderRadius: "8px",
+                    border: "1px solid var(--gray-200)",
+                    background: "var(--gray-50)",
+                    boxSizing: "border-box",
+                    fontSize: "13px",
+                    transition: "all 0.2s",
+                    outline: "none",
+                    appearance: "none",
+                    cursor: "pointer",
+                  }}
+                  onFocus={(e) => { e.target.style.background = "var(--white)"; e.target.style.borderColor = "var(--indigo-400)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.1)"; }}
+                  onBlur={(e) => { e.target.style.background = "var(--gray-50)"; e.target.style.borderColor = "var(--gray-200)"; e.target.style.boxShadow = "none"; }}
+                >
+                  <option value="">All Roles</option>
+                  <option value="admin">Admin</option>
+                  <option value="owner">Store Owner</option>
+                  <option value="user">Normal User</option>
+                </select>
+                <svg style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--gray-400)", pointerEvents: "none" }} width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
             </div>
           </div>
 
