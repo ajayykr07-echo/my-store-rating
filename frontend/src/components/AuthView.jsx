@@ -302,21 +302,18 @@ export default function AuthView({ onLoginSuccess, onNotify, darkMode, toggleDar
             </button>
           )}
         </div>
-        <div
+        <img
+          src="/logo.jpg"
+          alt="My Store Rating Logo"
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "48px",
-            height: "48px",
-            borderRadius: "12px",
-            background: "rgba(255, 255, 255, 0.2)",
-            fontSize: "24px",
-            marginBottom: "10px",
+            width: "56px",
+            height: "56px",
+            borderRadius: "14px",
+            objectFit: "cover",
+            marginBottom: "12px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
           }}
-        >
-          {isOwnerMode ? "🏪" : "★"}
-        </div>
+        />
         <h1
           style={{
             margin: "0 0 4px 0",

@@ -34,23 +34,17 @@ export default function Navbar({
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <div
+        <img
+          src="/logo.jpg"
+          alt="My Store Rating Logo"
           style={{
-            width: "40px",
-            height: "40px",
+            width: "44px",
+            height: "44px",
             borderRadius: "10px",
-            background: "linear-gradient(135deg, var(--indigo-500) 0%, var(--purple-500) 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "var(--white)",
-            fontSize: "20px",
-            fontWeight: "700",
-            boxShadow: "0 2px 6px rgba(99,102,241,0.3)",
+            objectFit: "cover",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
           }}
-        >
-          ★
-        </div>
+        />
         <div>
           <h1
             style={{
@@ -61,7 +55,7 @@ export default function Navbar({
               textAlign: "left",
             }}
           >
-            Store Rating Platform
+            My Store Rating
           </h1>
           <div
             style={{
